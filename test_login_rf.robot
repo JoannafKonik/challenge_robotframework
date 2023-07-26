@@ -13,6 +13,7 @@ ${PASSWORD FIELD}       xpath=//*[@id='password']
 ${EMAIL FIELD}      xpath=//*[@name='email']
 ${SIGNIN BUTTON}        xpath=//button[@type='submit']
 ${SIGNOUT BUTTON}       xpath=//*[text()='Sign out']
+${REMIND PASSWORD LABEL}        xpath=//*[@id="__next"]/div[1]/div/div[1]/h5
 ${PANEL LOGO}       xpath=//*[@title='Logo Scouts Panel']
 ${SCOUTSPANEL LABEL}        xpath=//*[text()='Scouts Panel']
 ${PLAYERS LABEL}        xpath=//*[text()='Players']
@@ -148,8 +149,7 @@ Open login page
     Open Browser    ${LOGIN URL}        ${BROWSER}
     Title Should Be    Scouts panel - sign in
 Open remind password page
-    Open Browser    ${REMIND PASSWORD URL}      ${BROWSER}
-    Title Should Be     Remind password
+    Wait Until Element Is Visible    ${REMIND PASSWORD LABEL}
 Open dashboard page
     Wait Until Element Is Visible    ${PANEL LOGO}
 Open addplayer page
@@ -233,7 +233,9 @@ Assert addplayer page
     Capture Page Screenshot    alert.png
 Assert addedplayer snackbar
     Wait Until Element Is Visible    ${ADDED PLAYER SNACKBAR}
+    Title Should Be    Edit player Johnny TheBest
     Capture Page Screenshot    alert.png
 Assert required field
     Wait Until Element Is Visible    ${REQUIRED FIELD}
+    Title Should Be    Add player
     Capture Page Screenshot    alert.png
