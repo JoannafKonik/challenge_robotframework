@@ -3,19 +3,19 @@ Library  SeleniumLibrary
 Documentation    Suite description #automated tests for scout website
 
 *** Variables ***
-${LOGIN URL}        https://scouts-test.futbolkolektyw.pl/en/login
-${REMIND PASSWORD URL}      https://scouts-test.futbolkolektyw.pl/en/remind
-${DASHBOARD URL}        https://scouts-test.futbolkolektyw.pl/en
-${ADDPLAYER URL}        https://scouts-test.futbolkolektyw.pl/en/players/add
+${LOGIN URL}        https://dareit.futbolkolektyw.pl/en
+${REMIND PASSWORD URL}      https://dareit.futbolkolektyw.pl/en/remind
+${DASHBOARD URL}        https://dareit.futbolkolektyw.pl/en
+${ADDPLAYER URL}        https://dareit.futbolkolektyw.pl/en/players/add
 ${BROWSER}          Chrome
 ${LOGIN FIELD}      xpath=//*[@id='login']
 ${PASSWORD FIELD}       xpath=//*[@id='password']
 ${EMAIL FIELD}      xpath=//*[@name='email']
 ${SIGNIN BUTTON}        xpath=//button[@type='submit']
-${SIGNOUT BUTTON}       xpath=//*[text()='Sign out']
+${SIGNOUT BUTTON}       xpath=//*[text()='Logout']
 ${REMIND PASSWORD LABEL}        xpath=//*[@id="__next"]/div[1]/div/div[1]/h5
 ${PANEL LOGO}       xpath=//*[@title='Logo Scouts Panel']
-${SCOUTSPANEL LABEL}        xpath=//*[text()='Scouts Panel']
+${SCOUTSPANEL LABEL}        xpath=//*[text()='PANEL SKAUTINGOWY']
 ${PLAYERS LABEL}        xpath=//*[text()='Players']
 ${ADDED PLAYER SNACKBAR}      xpath=//*[contains(@class, 'Toastify__toast Toastify__toast--success')]
 ${REMIND PASSWORD LINK}     xpath=//*[text()='Remind password']
@@ -42,6 +42,7 @@ ${RIGHT LEG}        xpath=//*[@id='menu-leg']/div[3]/ul/li[1]
 ${ADD LANGUAGE BUTTON}      xpath=//*[@id='__next']/div[1]/main/div[2]/form/div[2]/div/div[15]/button
 ${FIRST LANGUAGE FIELD}     xpath=//*[@name='languages[0]']
 ${SECOND LANGUAGE FIELD}        xpath=//*[@name='languages[1]']
+${FACEBOOK FIELD}       xpath=//*[@name='webFB']
 ${SUBMIT BUTTON}        xpath=//button[@type='submit']
 ${CLEAR BUTTON}     xpath=//*[@id='__next']/div[1]/main/div[2]/form/div[3]/button[2]
 ${REQUIRED FIELD}       xpath=//*[@class='MuiFormHelperText-root Mui-error Mui-required']
@@ -190,6 +191,8 @@ Type in first language
     Input Text    ${FIRST LANGUAGE FIELD}       English
 Type in second language
     Input Text    ${SECOND LANGUAGE FIELD}      Japanese
+Type in Facebook
+    Input Text    ${FACEBOOK FIELD}     TheBestPlayer
 Click on the sign in button
     Click Element    ${SIGNIN BUTTON}
 Click on the remind password link
@@ -218,7 +221,7 @@ Click on the clear button
     Click Element    ${CLEAR BUTTON}
 Assert dashboard
     Wait Until Element Is Visible    ${PANEL LOGO}
-    Title Should Be    Scouts panel
+    Title Should Be    PANEL SKAUTINGOWY
     Capture Page Screenshot    alert.png
 Assert login page
     Wait Until Element Is Visible    ${SCOUTSPANEL LABEL}
